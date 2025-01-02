@@ -101,6 +101,119 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="transferModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bank Transfer Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Please transfer the total amount to the following bank account:</p>
+                    <ul>
+                        <li><strong>Bank Name:</strong> Your Bank Name</li>
+                        <li><strong>Account Name:</strong> Your Account Name</li>
+                        <li><strong>Account Number:</strong> 1234567890</li>
+                        <li><strong>Total Amount:</strong> <span id="transferAmount"></span></li>
+                    </ul>
+                    <p>After completing the transfer, please upload the payment proof below:</p>
+                    <input type="file" id="proofOfPayment" class="form-control mb-3">
+                    <button class="btn btn-success w-100" id="submitTransfer">Submit Payment Proof</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <!-- ORDER SUMMMAEY -->
+<div class="modal fade" id="orderModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body p-4">
+                <h5>Order Details</h5>
+                <p class="text-muted small">Cross Check the details of your order before making payment</p>
+
+                <div class="mb-4">
+                    <p class="fw-bold mb-2">Summary</p>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Service</span>
+                        <span id="modalService" style="font-weight: 500"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Quantity</span>
+                        <span id="modalQuantity" style="font-weight: 500"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Amount</span>
+                        <span id="modalAmount" style="font-weight: 500"></span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Sub Total</span>
+                        <span id="modalSubtotal" style="font-weight: 500"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Delivery</span>
+                        <span style="font-weight: 500">Free</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Total</span>
+                        <span id="modalTotal" style="font-weight: 500"></span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <p class="fw-bold mb-2">Contact Information</p>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Phone</span>
+                        <span id="modalPhone" style="font-weight: 500"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Address</span>
+                        <span id="modalAddress" style="text-align: right; max-width: 60%; font-weight: 500;"></span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <p class="fw-bold mb-2">Payment Method</p>
+                    <div class="payment-option mb-2">
+                        <input type="radio" name="payment" id="pod">
+                        <label for="pod" class="ms-2">Payment on Delivery</label>
+                    </div>
+                    <div class="payment-option mb-2">
+                        <input type="radio" name="payment" id="card">
+                        <label for="card" class="ms-2">Pay with Card</label>
+                    </div>
+                    <div class="payment-option mb-2">
+                        <input type="radio" name="payment" id="transfer">
+                        <label for="transfer" class="ms-2">Pay with Bank Transfer</label>
+                    </div>
+                </div>
+
+                <button class="btn btn-danger w-100 py-3" onclick="showConfirmation()" disabled>
+                    Make Payment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center p-4">
+                <img src="Done icon.svg" alt="Success" class="mb-3" style="max-height: 100px;">
+                <h6 class="mb-3">Your Order has been Sent Successfully</h6>
+                <p class="text-muted">Your order has been completed and has been received by our team.</p>
+                <a href="index.html" class="btn btn-danger w-100 py-3">Go back to home</a>
+            </div>
+        </div>
+    </div>
+</div>
     
     <footer class="footer">
         <div class="container">
@@ -136,96 +249,124 @@
     
 
     <script>
-    function handleAccessoryChange() {
-    const lubricantType = document.getElementById("LubricantType");
-    const quantityLabel = document.getElementById("quantityLabel");
+        function handleAccessoryChange() {
+            const lubricantType = document.getElementById("LubricantType");
+            const quantityLabel = document.getElementById("quantityLabel");
     
-    if (!lubricantType) return;
+            const selectedOption = lubricantType.options[lubricantType.selectedIndex];
+            const unit = selectedOption.getAttribute("data-unit");
     
-    const selectedOption = lubricantType.options[lubricantType.selectedIndex];
-    const unit = selectedOption.getAttribute("data-unit");
-    
-    if (quantityLabel) {
-        quantityLabel.textContent = unit === "yards" ? "Yards" : "Quantity";
-    }
-    
-    updatePrice();
-    validateButton();
-}
-
-function updatePrice() {
-    const lubricantType = document.getElementById("LubricantType");
-    const quantity = document.getElementById("LubricantsQuantity").value;
-    const priceDisplay = document.getElementById("totalPrice");
-    
-    if (!lubricantType || !priceDisplay) return;
-    
-    const selectedOption = lubricantType.options[lubricantType.selectedIndex];
-    const pricePerUnit = selectedOption.getAttribute("data-price") ? parseFloat(selectedOption.getAttribute("data-price")) : 0;
-    
-    const totalPrice = pricePerUnit * quantity;
-    priceDisplay.innerHTML = `<b>₦${totalPrice.toFixed(2)}</b>`;
-    validateButton();
-}
-
-function validateButton() {
-    const formInputs = [
-        document.getElementById("productType"),
-        document.getElementById("LubricantType"),
-        document.getElementById("LubricantsQuantity"),
-        document.getElementById("name"),
-        document.getElementById("phone"),
-        document.getElementById("address")
-    ];
-    
-    const orderButton = document.getElementById("orderButton");
-    
-    if (!orderButton) return;
-    
-    const allFilled = formInputs.every(input => {
-        return input && input.value && input.value.trim() !== "";
-    });
-
-    orderButton.disabled = !allFilled;
-    orderButton.style.pointerEvents = allFilled ? 'auto' : 'none';
-    orderButton.classList.toggle('active', allFilled);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    // Add event listeners to all form fields
-    const formInputs = [
-        "productType",
-        "LubricantType",
-        "LubricantsQuantity",
-        "name",
-        "phone",
-        "address"
-    ];
-    
-    formInputs.forEach(id => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.addEventListener("input", validateButton);
-            element.addEventListener("change", validateButton);
+            quantityLabel.textContent = unit === "yards" ? "Yards" : "Quantity";
+            updatePrice();
+            validateButton();
         }
-    });
-
-    // Add form submit handler
-    const form = document.getElementById("gasOrderForm");
-    if (form) {
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
+    
+        function updatePrice() {
+            const lubricantType = document.getElementById("LubricantType");
+            const quantity = parseInt(document.getElementById("LubricantsQuantity").value) || 0;
+            const priceDisplay = document.getElementById("totalPrice");
+    
+            const selectedOption = lubricantType.options[lubricantType.selectedIndex];
+            const pricePerUnit = parseFloat(selectedOption.getAttribute("data-price")) || 0;
+    
+            const totalPrice = pricePerUnit * quantity;
+            priceDisplay.innerHTML = `<b>₦${totalPrice.toLocaleString()}</b>`;
+            validateButton();
+        }
+    
+        function validateButton() {
+            const formInputs = [
+                document.getElementById("productType"),
+                document.getElementById("LubricantType"),
+                document.getElementById("LubricantsQuantity"),
+                document.getElementById("name"),
+                document.getElementById("phone"),
+                document.getElementById("address"),
+            ];
+    
             const orderButton = document.getElementById("orderButton");
-            if (!orderButton.disabled) {
-                window.location.href = "Orderconfirmation.html";
-            }
+            const allFilled = formInputs.every(input => input && input.value.trim() !== "");
+    
+            orderButton.disabled = !allFilled;
+            orderButton.classList.toggle("active", allFilled);
+        }
+    
+        function showOrderSummary() {
+            const selectedLubricant = document.getElementById("LubricantType").selectedOptions[0].textContent;
+            const quantity = document.getElementById("LubricantsQuantity").value;
+            const totalPrice = document.getElementById("totalPrice").textContent;
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const address = document.getElementById("address").value;
+    
+            // Populate modal with form data
+            document.getElementById("modalService").textContent = selectedLubricant;
+            document.getElementById("modalQuantity").textContent = quantity;
+            document.getElementById("modalAmount").textContent = totalPrice;
+            document.getElementById("modalSubtotal").textContent = totalPrice;
+            document.getElementById("modalTotal").textContent = totalPrice;
+            document.getElementById("modalPhone").textContent = phone;
+            document.getElementById("modalAddress").textContent = address;
+    
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById("orderModal"));
+            modal.show();
+        }
+    
+        function enablePaymentButton() {
+            const paymentRadios = document.querySelectorAll('input[name="payment"]');
+            const makePaymentButton = document.querySelector(".btn-danger");
+    
+            paymentRadios.forEach(radio => {
+                radio.addEventListener("change", () => {
+                    makePaymentButton.disabled = false;
+                });
+            });
+        }
+    
+        function showConfirmation() {
+            const orderModal = bootstrap.Modal.getInstance(document.getElementById("orderModal"));
+            orderModal.hide();
+    
+            const confirmationModal = new bootstrap.Modal(document.getElementById("confirmationModal"));
+            confirmationModal.show();
+        }
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            const formInputs = [
+                "productType",
+                "LubricantType",
+                "LubricantsQuantity",
+                "name",
+                "phone",
+                "address",
+            ];
+    
+            formInputs.forEach(id => {
+                const element = document.getElementById(id);
+                element.addEventListener("input", validateButton);
+                element.addEventListener("change", validateButton);
+            });
+    
+            const form = document.getElementById("gasOrderForm");
+            form.addEventListener("submit", e => {
+                e.preventDefault();
+                if (!document.getElementById("orderButton").disabled) {
+                    showOrderSummary();
+                }
+            });
+    
+            const makePaymentButton = document.querySelector(".btn-danger");
+            makePaymentButton.addEventListener("click", showConfirmation);
+    
+            enablePaymentButton();
+            validateButton();
+            handleAccessoryChange();
         });
-    } 
 
-    validateButton();
-    handleAccessoryChange();
-});
+        
     </script>
+    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

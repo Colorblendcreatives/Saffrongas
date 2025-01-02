@@ -65,16 +65,16 @@
                     <form id="gasOrderForm">
                         
                         <!-- Step 1: Initial Product Selection -->
-                        <div id="step1">
+                        <!-- <div id="step1">
                             <div class="form-label">Choose Product you want to Order</div>
                             <select class="form-select" id="productType" required onchange="handleProductChange()">
                                 <option value="">Select Product Type</option>
                                 <option value="Gas_Cookers">Gas Cookers</option>
                             </select>
-                        </div>
+                        </div> -->
 
                         <!-- Step 2: Cooker Selection Grid -->
-                        <div id="step2" style="display: none;">
+                        <div id="step2">
                             <select class="form-select" id="productType" required>
                                 <option value="gas_refill">Gas Cylinder</option>
                             </select>
@@ -180,6 +180,94 @@
             </div>
         </section>
 
+<!-- ORDER SUMMMAEY -->
+<div class="modal fade" id="orderModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body p-4">
+                <h5>Order Details</h5>
+                <p class="text-muted small">Cross Check the details of your order before making payment</p>
+
+                <div class="mb-4">
+                    <p class="fw-bold mb-2">Summary</p>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Service</span>
+                        <span id="modalService" style="font-weight: 500"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Quantity</span>
+                        <span id="modalQuantity" style="font-weight: 500"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Amount</span>
+                        <span id="modalAmount" style="font-weight: 500"></span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Sub Total</span>
+                        <span id="modalSubtotal" style="font-weight: 500"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Delivery</span>
+                        <span style="font-weight: 500">Free</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Total</span>
+                        <span id="modalTotal" style="font-weight: 500"></span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <p class="fw-bold mb-2">Contact Information</p>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Phone</span>
+                        <span id="modalPhone" style="font-weight: 500"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Address</span>
+                        <span id="modalAddress" style="text-align: right; max-width: 60%; font-weight: 500;"></span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <p class="fw-bold mb-2">Payment Method</p>
+                    <div class="payment-option mb-2">
+                        <input type="radio" name="payment" id="pod">
+                        <label for="pod" class="ms-2">Payment on Delivery</label>
+                    </div>
+                    <div class="payment-option mb-2">
+                        <input type="radio" name="payment" id="card">
+                        <label for="card" class="ms-2">Pay with Card</label>
+                    </div>
+                    <div class="payment-option mb-2">
+                        <input type="radio" name="payment" id="transfer">
+                        <label for="transfer" class="ms-2">Pay with Bank Transfer</label>
+                    </div>
+                </div>
+
+                <button class="btn btn-danger w-100 py-3" onclick="showConfirmation()" disabled>
+                    Make Payment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center p-4">
+                <img src="Done icon.svg" alt="Success" class="mb-3" style="max-height: 100px;">
+                <h6 class="mb-3">Your Order has been Sent Successfully</h6>
+                <p class="text-muted">Your order has been completed and has been received by our team.</p>
+                <a href="index.html" class="btn btn-danger w-100 py-3">Go back to home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
         <footer class="footer">
             <div class="container">
                 <div class="row align-items-center">
@@ -262,6 +350,22 @@ function validateForm() {
     orderButton.classList.toggle('active', allFieldsFilled);
 }
 
+// Function to show confirmation modal
+function showConfirmation() {
+    // Hide order modal
+    const orderModal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
+    orderModal.hide();
+    
+    // Show confirmation modal
+    const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+    confirmationModal.show();
+}
+
+// Function to format price
+function formatPrice(price) {
+    return `₦${parseFloat(price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('gasOrderForm');
     
@@ -270,11 +374,48 @@ document.addEventListener('DOMContentLoaded', () => {
         element.addEventListener('input', validateForm);
     });
 
+    // Handle form submission
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         if (!document.getElementById('orderButton').disabled) {
-            window.location.href = 'Orderconfirmation.html';
+            // Get form values
+            const selectedCooker = document.querySelector('input[name="cookerChoice"]:checked');
+            const cookerName = selectedCooker ? selectedCooker.value : '';
+            const quantity = document.getElementById('quantity').value;
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const totalPrice = document.getElementById('totalPrice').textContent;
+
+            // Update modal with form values
+            document.getElementById('modalService').textContent = cookerName;
+            document.getElementById('modalQuantity').textContent = quantity;
+            document.getElementById('modalAmount').textContent = totalPrice;
+            document.getElementById('modalSubtotal').textContent = totalPrice;
+            document.getElementById('modalTotal').textContent = totalPrice;
+            document.getElementById('modalPhone').textContent = phone;
+            document.getElementById('modalAddress').textContent = address;
+
+            // Show the order modal
+            const modal = new bootstrap.Modal(document.getElementById('orderModal'));
+            modal.show();
         }
+    });
+
+    // Add event listener for payment method radios
+    const paymentRadios = document.querySelectorAll('input[name="payment"]');
+    paymentRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            document.querySelector('.btn-danger').disabled = false;
+        });
+    });
+
+    // Add event listener for quantity changes
+    document.getElementById('quantity').addEventListener('change', (e) => {
+        if (parseInt(e.target.value) < 1) {
+            e.target.value = 1;
+        }
+        updatePrice();
     });
 
     validateForm();

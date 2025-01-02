@@ -105,6 +105,95 @@
         </div>
     </section>
   
+
+    
+    <!-- ORDER SUMMMAEY -->
+<div class="modal fade" id="orderModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body p-4">
+                <h5>Order Details</h5>
+                <p class="text-muted small">Cross Check the details of your order before making payment</p>
+
+                <div class="mb-4">
+                    <p class="fw-bold mb-2">Summary</p>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Service</span>
+                        <span id="modalService" style="font-weight: 500"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Quantity</span>
+                        <span id="modalQuantity" style="font-weight: 500"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Amount</span>
+                        <span id="modalAmount" style="font-weight: 500"></span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Sub Total</span>
+                        <span id="modalSubtotal" style="font-weight: 500"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Delivery</span>
+                        <span style="font-weight: 500">Free</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Total</span>
+                        <span id="modalTotal" style="font-weight: 500"></span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <p class="fw-bold mb-2">Contact Information</p>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Phone</span>
+                        <span id="modalPhone" style="font-weight: 500"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Address</span>
+                        <span id="modalAddress" style="text-align: right; max-width: 60%; font-weight: 500;"></span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <p class="fw-bold mb-2">Payment Method</p>
+                    <div class="payment-option mb-2">
+                        <input type="radio" name="payment" id="pod">
+                        <label for="pod" class="ms-2">Payment on Delivery</label>
+                    </div>
+                    <div class="payment-option mb-2">
+                        <input type="radio" name="payment" id="card">
+                        <label for="card" class="ms-2">Pay with Card</label>
+                    </div>
+                    <div class="payment-option mb-2">
+                        <input type="radio" name="payment" id="transfer">
+                        <label for="transfer" class="ms-2">Pay with Bank Transfer</label>
+                    </div>
+                </div>
+
+                <button class="btn btn-danger w-100 py-3" onclick="showConfirmation()" disabled>
+                    Make Payment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center p-4">
+                <img src="Done icon.svg" alt="Success" class="mb-3" style="max-height: 100px;">
+                <h6 class="mb-3">Your Order has been Sent Successfully</h6>
+                <p class="text-muted">Your order has been completed and has been received by our team.</p>
+                <a href="index.html" class="btn btn-danger w-100 py-3">Go back to home</a>
+            </div>
+        </div>
+    </div>
+</div>
        
 <!-- Footer -->
 <footer class="footer">
@@ -138,109 +227,148 @@
         </div>
     </div>
 </footer>
-
-    <script>
-      const priceList = {
-    '2kg': 8000,
-    '3kg': 8000,
-    '5kg': 8000,
-    '12.5kg': 8000,
-    '20kg': 8000,
-    '25kg': 8000,
-    '45kg': 8000,
-    '50kg': 8000
-};
-
-const form = document.getElementById('gasOrderForm');
-const cylinderCount = document.getElementById('cylinderCount');
-const cylinderQuantities = document.getElementById('cylinderQuantities');
-const totalPriceDisplay = document.getElementById('totalPrice');
-const orderButton = document.getElementById('orderButton');
-
-cylinderCount.addEventListener('change', function() {
-    cylinderQuantities.innerHTML = '';
-    const count = parseInt(this.value) || 0;
-    
-    for(let i = 0; i < count; i++) {
-        const select = document.createElement('select');
-        select.className = 'form-select cylinder-quantity';
-        select.required = true;
-        select.innerHTML = `
-            <option value="">Select cylinder ${i + 1} size</option>
-            ${Object.keys(priceList).map(size => 
-                `<option value="${size}">${size}</option>`
-            ).join('')}
-        `;
-        select.addEventListener('change', calculateTotal);
-        cylinderQuantities.appendChild(select);
-    }
-    
-    const quantitySelects = document.querySelectorAll('.cylinder-quantity');
-    quantitySelects.forEach(select => select.style.display = 'block');
-    
-    calculateTotal();
-});
-
-function calculateTotal() {
-    const quantitySelects = document.querySelectorAll('.cylinder-quantity');
-    let total = 0;
-    
-    quantitySelects.forEach(select => {
-        const size = select.value;
-        if (size && priceList[size]) {
-            total += priceList[size];
-        }
-    });
-    
-    totalPriceDisplay.innerHTML = ` <strong>₦${total.toLocaleString()}</strong>`;
-    checkFormValidity();
-}
-
-function checkFormValidity() {
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const address = document.getElementById('address').value;
-    const quantitySelects = document.querySelectorAll('.cylinder-quantity');
-    
-    let quantitiesValid = true;
-    quantitySelects.forEach(select => {
-        if (!select.value) quantitiesValid = false;
-    });
-
-    const isValid = name && phone && address && quantitiesValid && cylinderCount.value;
-    
-    if (isValid) {
-        orderButton.classList.add('active');
-        orderButton.disabled = false;
-    } else {
-        orderButton.classList.remove('active');
-        orderButton.disabled = true;
-    }
-}
-
-['name', 'phone', 'address'].forEach(id => {
-    document.getElementById(id).addEventListener('input', checkFormValidity);
-});
-
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    if (!orderButton.classList.contains('active')) return;
-
-    const formData = {
-        cylinderCount: cylinderCount.value,
-        cylinders: Array.from(document.querySelectorAll('.cylinder-quantity')).map(select => select.value),
-        name: document.getElementById('name').value,
-        phone: document.getElementById('phone').value,
-        address: document.getElementById('address').value,
-        totalAmount: totalPriceDisplay.textContent
+<script>
+    const priceList = {
+        '2kg': 8000,
+        '3kg': 8000,
+        '5kg': 8000,
+        '12.5kg': 8000,
+        '20kg': 8000,
+        '25kg': 8000,
+        '45kg': 8000,
+        '50kg': 8000
     };
 
-    
+    const form = document.getElementById('gasOrderForm');
+    const cylinderCount = document.getElementById('cylinderCount');
+    const cylinderQuantities = document.getElementById('cylinderQuantities');
+    const totalPriceDisplay = document.getElementById('totalPrice');
+    const orderButton = document.getElementById('orderButton');
 
-    console.log('Order submitted:', formData);
-    window.location.href = "Orderconfirmation.html";
-});
-    </script>
+    // Generate cylinder size dropdowns based on count
+    cylinderCount.addEventListener('change', function () {
+        cylinderQuantities.innerHTML = '';
+        const count = parseInt(this.value) || 0;
+
+        for (let i = 0; i < count; i++) {
+            const select = document.createElement('select');
+            select.className = 'form-select cylinder-quantity';
+            select.required = true;
+            select.innerHTML = `
+                <option value="">Select cylinder ${i + 1} size</option>
+                ${Object.keys(priceList).map(size =>
+                    `<option value="${size}">${size}</option>`
+                ).join('')}
+            `;
+            select.addEventListener('change', calculateTotal);
+            cylinderQuantities.appendChild(select);
+        }
+
+        calculateTotal();
+    });
+
+    // Calculate total price based on selected cylinder sizes
+    function calculateTotal() {
+        const quantitySelects = document.querySelectorAll('.cylinder-quantity');
+        let total = 0;
+
+        quantitySelects.forEach(select => {
+            const size = select.value;
+            if (size && priceList[size]) {
+                total += priceList[size];
+            }
+        });
+
+        totalPriceDisplay.innerHTML = `<strong>₦${total.toLocaleString()}</strong>`;
+        checkFormValidity();
+    }
+
+    // Check if form is valid
+    function checkFormValidity() {
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const quantitySelects = document.querySelectorAll('.cylinder-quantity');
+
+        let quantitiesValid = true;
+        quantitySelects.forEach(select => {
+            if (!select.value) quantitiesValid = false;
+        });
+
+        const isValid = name && phone && address && quantitiesValid && cylinderCount.value;
+
+        if (isValid) {
+            orderButton.classList.add('active');
+            orderButton.disabled = false;
+        } else {
+            orderButton.classList.remove('active');
+            orderButton.disabled = true;
+        }
+    }
+
+    // Show order summary modal
+    function showOrderSummary() {
+        const cylinders = Array.from(document.querySelectorAll('.cylinder-quantity')).map(select => select.value).join(', ');
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const totalPrice = totalPriceDisplay.textContent;
+
+        // Populate modal fields
+        document.getElementById('modalService').textContent = 'Gas Refill';
+        document.getElementById('modalQuantity').textContent = cylinders;
+        document.getElementById('modalAmount').textContent = totalPrice;
+        document.getElementById('modalSubtotal').textContent = totalPrice;
+        document.getElementById('modalTotal').textContent = totalPrice;
+        document.getElementById('modalPhone').textContent = phone;
+        document.getElementById('modalAddress').textContent = address;
+
+        // Show modal
+        const modal = new bootstrap.Modal(document.getElementById('orderModal'));
+        modal.show();
+    }
+
+    // Enable "Make Payment" button when a payment method is selected
+    function enablePaymentButton() {
+        const paymentRadios = document.querySelectorAll('input[name="payment"]');
+        const makePaymentButton = document.querySelector('.btn-danger');
+
+        paymentRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                makePaymentButton.disabled = false;
+            });
+        });
+    }
+
+    // Show confirmation modal
+    function showConfirmation() {
+        const orderModal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
+        orderModal.hide();
+
+        const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+        confirmationModal.show();
+    }
+
+    // Initialize event listeners
+    document.addEventListener('DOMContentLoaded', function () {
+        ['name', 'phone', 'address'].forEach(id => {
+            document.getElementById(id).addEventListener('input', checkFormValidity);
+        });
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!orderButton.disabled) {
+                showOrderSummary();
+            }
+        });
+
+        const makePaymentButton = document.querySelector('.btn-danger');
+        makePaymentButton.addEventListener('click', showConfirmation);
+
+        enablePaymentButton();
+    });
+</script>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
