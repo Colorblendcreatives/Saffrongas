@@ -1,0 +1,302 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; 
+    font-family: 'Satoshi', sans-serif;
+}
+
+
+.navbar {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 20px 0;
+}
+
+.nav-link {
+    font-size: 16px;
+    font-weight: 700;  
+    color: #000;
+    padding: 10px 20px;
+}
+
+.nav-link.active {
+    color: #EB1923; 
+    border-bottom: 2px solid #EB1923;
+}
+
+.nav-link:hover {
+    color: #EB1923;
+    text-decoration: none;
+}
+
+/* Order Now button styling */
+.btn-danger {
+    font-weight: 700; 
+    background-color: #EB1923; 
+    border: none;
+    border-radius: 5px;
+    max-width: 200px;
+}
+
+.btn-danger:hover {
+    background-color: #c2181d; 
+}
+
+/* Gas icon styling */
+.gas-icon {
+    height: 20px;
+    width: 20px;
+}
+
+.ordernow-btn{
+    background-color: #EB1923; 
+    padding: 10px; 
+    color: white; 
+    border-radius: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight:bold;
+    text-decoration: none   ;
+}
+
+.ordernow-btn:hover{
+ background-color: white;   
+text-decoration: none;
+color: white;
+/* border: 2px solid #EB1923; */
+}
+
+.nav-btn{
+    background-color: #EB1923; 
+    padding: 10px; 
+    color: white; 
+    border-radius: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight:bold;
+    text-decoration: none   ;
+}
+
+.nav-btn:hover{
+    background-color: #C50010;
+    text-decoration: none;
+    color: white;
+}
+
+
+.form-section {
+    position: relative;
+   min-height: calc(100vh - 140px); 
+           }
+   
+/* Base form section styles */
+.form-section {
+    position: relative;
+    min-height: calc(100vh - 140px);
+}
+
+/* Background image styling */
+.form-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('Hero\ Section.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Dark overlay on background */
+.form-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Form container styling */
+.form-container {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Form title styling */
+.form-title {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form inputs styling */
+.form-select, 
+.form-control {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-select:focus, 
+.form-control:focus {
+    box-shadow: none;
+    border-color: #dc3545;
+    outline: none;
+}
+
+/* Order button styling */
+.order-btn {
+    width: 100%;
+    background-color: #EB1923;
+    border: none;
+    padding: 12px;
+    color: white;
+    border-radius: 5px;
+    cursor: not-allowed;
+    opacity: 0.65;
+    transition: all 0.3s ease;
+}
+
+.order-btn.active {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.order-btn.active:hover {
+    background-color: #c82333;
+}
+
+/* Mobile responsive styles */
+@media screen and (max-width: 768px) {
+    .form-section {
+        min-height: 100vh;
+        padding: 0;
+    }
+
+    .form-background,
+    .form-overlay {
+        display: none;
+    }
+
+    .form-container {
+        margin: 0;
+        min-height: 100vh;
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .form-title {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .form-select,
+    .form-control {
+        margin-bottom: 20px;
+    }
+}
+
+
+
+/* Order button styling */
+.order-btn {
+    width: 100%;
+    background-color: #EB1923;
+    border: none;
+    padding: 12px;
+    color: white;
+    border-radius: 5px;
+    cursor: not-allowed;
+    opacity: 0.65;
+    transition: all 0.3s ease;
+}
+
+.order-btn.active {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.order-btn.active:hover {
+    background-color: #c82333;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #3A0A00;
+    padding: 2rem 0;
+    color: white;
+}
+
+.footer-logo {
+    height: 50px;
+}
+
+.contact-info {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-end;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Mobile responsive styles */
+@media screen and (max-width: 768px) {
+    .form-section {
+        min-height: 100vh;
+        padding: 0;
+    }
+
+    .form-background,
+    .form-overlay {
+        display: none;
+    }
+
+    .form-container {
+        margin: 0;
+        min-height: 100vh;
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .form-title {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .form-select,
+    .form-control {
+        margin-bottom: 20px;
+    }
+
+    /* Hide footer on mobile */
+    .footer {
+        display: none;
+    }
+}

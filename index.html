@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Cylinder Services</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="main.css">
+    <!-- Satoshi Font -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+</head>
+<body>  
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="Logo.webp" alt="Logo" height="40" >
+            </a>
+    
+            <!-- Toggler for mobile view -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav mx-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold px-3" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold px-3" href="#About">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold px-3" href="#Service">Our Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold px-3" href="#Pricing">Price List</a>
+                    </li>
+                </ul>
+
+                <!-- Order Now Button -->
+                <a href="Ordergas.html" class="nav-btn" id="nav-btn" >
+                    <img src="Vectorwhite.png" alt="Gas Icon" style="margin-right: 10px; height: 20px; width: 12px;">
+                    <b>Order Now</b>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Hero Section -->
+    <section class="hero-section position-relative">
+        <!-- Mobile View (will be hidden on desktop) -->
+        <div class="d-block d-lg-none">
+            <div class="container py-5">
+                <div class="text-white">
+                    <div class="mb-4">
+                        <h5 class="display-4 fw-bold mb-3">Buy and Refill Quality Cooking Gas and Cylinders</h5>
+                        <p class="lead">
+                            Experience the convenience and safety of top-quality cooking gas 
+                            and cylinders designed to keep your home and business running smoothly. 
+                            Whether you’re cooking daily meals, hosting a family gathering, or running 
+                            a restaurant, our gas solutions are reliable, affordable, and eco-friendly.
+                        </p>
+                    </div>
+                    <div class="d-flex flex-column gap-3 mb-4">
+                    
+                        <a href="Ordergas.html" class="ordernow-btn" style="background-color: white; color: #C50010; justify-content: center; display: inline-flex; height: 48px;">
+                            <img src="Vector (1).webp" alt="Gas Icon" style="margin-right: 10px; height: 20px; width: 12px;">
+                            <b>Order Now</b>
+                        </a>
+                        <a href="Ordergas.html" class="ordernow-btn" style="background-color: #C50010; border: 2px solid white; color: white; justify-content: center; display: inline-flex; height: 48px;">
+                            
+                            <b>Contact</b>
+                        </a>
+                    </div>
+                    <!-- Image placed after the text -->
+                    <div class="mt-4" id="about-img">
+                        <img src="HErogas mobile.webp" class="img-fluid w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Desktop View (will be hidden on mobile) -->
+        <div class="d-none d-lg-block">
+            <div class="container-fluid px-0">
+                <div class="row g-0">
+                    <!-- Text Content (Left Side) -->
+                    <div class="col-lg-6 bg-red text-white p-5">
+                        <div class="py-5 px-4">
+                            <h1 class="display-4 fw-bold mb-3">Buy and Refill Quality Cooking Gas and Cylinders</h1>
+                            <p class="lead">
+                                Experience the convenience and safety of top-quality cooking gas and cylinders
+                                designed to keep your home and business running smoothly. Whether you're
+                                cooking daily meals, hosting a family gathering, or running a restaurant, our gas
+                                solutions are reliable, affordable, and eco-friendly.
+                            </p>
+                            <div class="d-flex gap-3 mt-4">
+                                <button class="contact-btn" id="contact-btn"><b>Contact Us</b></button>
+                                <a href="Ordergas.html" class="ordernow-btn" style="background-color: white; color: #C50010; justify-content: center; display: inline-flex; height: 48px;">
+                                    <img src="Vector (1).webp" alt="Gas Icon" style="margin-right: 10px; height: 20px; width: 12px;">
+                                    <b>Order Now</b>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Image (Right Side) -->
+                    <div class="col-lg-6 p-0">
+                        <div class="h-100" style="background: url('Herogas.webp') center/cover no-repeat; height: 10%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- ABOUT SECTION --> 
+    <section class="about-section py-5" id="About">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold">About Saffron Gas</h2>
+                    <p class="mt-3">At Saffron Gas we are committed to meeting your energy and cooking needs with quality and reliability. Conveniently located in Ugborikoko Town, adjacent to the Secretariat, we provide a wide range of products and services tailored to make your life easier and your cooking experience better.</p>
+                    <ul class="list-unstyled mt-4">
+                        <li class="d-flex align-items-start mb-3">
+                            <span class="check-circle me-3"></span>
+                            <span><b>Refill of Quality Cooking Gas</b> — Delivered with speed, safety, and affordability.</span>
+                        </li>
+                        <li class="d-flex align-items-start mb-3">
+                            <span class="check-circle me-3"></span>
+                            <span><b>Sales of Gas Accessories</b> — Your one-stop shop for essential tools and fittings.</span>
+                        </li>
+                        <li class="d-flex align-items-start mb-3">
+                            <span class="check-circle me-3"></span>
+                            <span><b>Sales of Gas Cookers</b> — Top-notch cookers for every household or commercial use.</span>
+                        </li>
+                        <li class="d-flex align-items-start mb-3">
+                            <span class="check-circle me-3"></span>
+                            <span><b>Sales of Gas Cylinders of Different Sizes</b> — Options to suit any requirement, big or small.</span>
+                        </li>
+                        <li class="d-flex align-items-start mb-3">
+                            <span class="check-circle me-3"></span>
+                            <span><b>Sales of Lubricants</b> — Premium products to keep your equipment in excellent condition.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <img src="Image Container.webp" alt="Gas Storage Tank" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+     
+ 
+    <!-- Services Section -->
+<section class="py-5" id="Service">
+    <div class="container">
+        <h2 class="text-center mb-4">Our Services</h2>
+        
+        <!-- Services Container -->
+        <div class="services-container">
+            <!-- Individual Service Items -->
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="IMage Container R.webp" alt="Gas Refill" class="img-fluid rounded">
+                </div>
+                <div class="service-info">
+                    <h3>Gas Refill</h3>
+                    <button class="plus-sign">+</button>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="IMage Container 1.webp" alt="Accessories Sales" class="img-fluid rounded">
+                </div>
+                <div class="service-info">
+                    <h3>Accessories Sales</h3>
+                    <button class="plus-sign">+</button>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="IMage Container 2.webp" alt="Gas Cookers Sales" class="img-fluid rounded">
+                </div>
+                <div class="service-info">
+                    <h3>Gas Cookers Sales</h3>
+                    <button class="plus-sign">+</button>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="IMage Container 3.webp" alt="Gas Installation" class="img-fluid rounded">
+                </div>
+                <div class="service-info">
+                    <h3>Gas Installation</h3>
+                    <button class="plus-sign">+</button>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="image continer 4.webp" alt="Maintenance" class="img-fluid rounded">
+                </div>
+                <div class="service-info">
+                    <h3>Maintenance</h3>
+                    <button class="plus-sign">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+
+    <!-- PRICING SECTION -->
+   <section class="container py-5" id="Pricing">
+        <h1 class="section-title">Our Price List</h1>
+        
+        <div class="row">
+            <!-- First Row -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header"><h4>Gas Refill</h4></div>
+                    <div class="card-body p-0">
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>5kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>6kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>12.5kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>20kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>25kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>45kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>50kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                    </div>
+                    <a href="Gasrefillorder.html" style="text-decoration: none;">
+                        <button class="service-btn" id="service-btn">
+                           <h5>Order Now</h5>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header"><h4>Gas Cylinders</h4></div>
+                    <div class="card-body p-0">
+                        <div class="price-row">
+                            <span>3 KG (Complete)</span>
+                            <span>₦35,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>3 KG cylinder only</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>6 KG</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>12.5KG</span>
+                            <span>₦45,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>25 KG</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>50 KG Calor</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>50 KG FloGas</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                    </div>
+                    <a href="Gascyliderorder.html" style="text-decoration: none;">
+                        <button class="service-btn" id="service-btn">
+                           <h5>Order Now</h5>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header"><h4>Gas Cookers</h4></div>
+                    <div class="card-body p-0">
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                    </div>
+                    <a href="gascooker.html" style="text-decoration: none;">
+                        <button class="service-btn" id="service-btn"> 
+                           <h5>Order Now</h5>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header"><h4>Accessories</h4></div>
+                    <div class="card-body p-0">
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                    </div>
+                    <a href="accessories.html" style="text-decoration: none;">
+                        <button class="service-btn" id="service-btn">
+                           <h5>Order Now</h5>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header"><h4>Lubricants</h4></div>
+                    <div class="card-body p-0">
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                        <div class="price-row">
+                            <span>2kg</span>
+                            <span>₦3,000</span>
+                        </div>
+                    </div>
+                    <a href="Lubricants.html" style="text-decoration: none;">
+                        <button class="service-btn" id="service-btn">
+                           <h5>Order Now</h5>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+          
+        </div>
+    </section>
+
+    <section class="premium-banner">
+        <div class="overlay">
+            <h2>Serving you Premium Quality Cooking Gas</h2>
+            <div class="button-container">
+                <button class="contact-btn">Contact Us</button>
+                <a href="Ordergas.html" class="ordernow-btn" style="background-color: #EB1923; color: white; justify-content: center; display: inline-flex; height: 48px;">
+                    <img src="Vectorwhite.png" alt="Gas Icon" style="margin-right: 10px; height: 20px; width: 12px;">
+                    <b>Order Now</b>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                <img src="Logo.webp" alt="Saffron Gas" class="footer-logo">
+            </div>
+            <div class="col-md-8">
+                <div class="contact-info">
+                    <div class="col-md-8">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone icon" style="rotate: 90deg;"></i>
+                                <a href="tel:09023480455" style="text-decoration: none; color: inherit;">
+                                    <span>09023480455</span>
+                                </a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt icon"></i>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Ugbornkoko+Town,+adjacent+to+the+Secretariat" 
+                                   target="_blank" 
+                                   style="text-decoration: none; color: inherit;">
+                                    <span>Ugbornkoko Town, adjacent to the Secretariat</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

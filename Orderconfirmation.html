@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Refill Order</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Orderconfirmation.css">
+    <!-- Satoshi Font -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+</head> 
+<body> 
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="Logo.webp" alt="Logo" height="40">
+            </a>
+    
+            <!-- Toggler for mobile view -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav mx-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link  fw-bold px-3" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold px-3" href="#About">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold px-3" href="#Service">Our Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold px-3" href="#Pricing">Price List</a>
+                    </li>
+                </ul>
+
+                <!-- Order Now Button -->
+                <a href="Ordergas.html" class="nav-btn" id="nav-btn" >
+                    <img src="Vectorwhite.png" alt="Gas Icon" style="margin-right: 10px; height: 20px; width: 12px;">
+                    <b>Order Now</b>
+                </a>
+            </div>
+        </div>
+    </nav><br><br><br>
+    <!-- MAIN SECTION -->
+    <section class="form-section">
+        <div class="form-background"></div>
+        <div class="form-overlay"></div>
+        <div class="container"><br>
+            <div class="order-card">
+                <h1 class="title">Order Details</h1>
+                <p class="subtitle">Cross Check the details of your order before making payment</p>
+
+                <div class="section-label">Summary</div>
+                <div class="summary-section">
+                    <div class="detail-row">
+                        <span class="label">Service</span>
+                        <span class="value">Gas Refill</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">No of Cylinder</span>
+                        <span class="value">2</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">1st Cylinder Qty</span>
+                        <span class="value">2 KG</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Amount</span>
+                        <span class="value">₦3000</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">2nd Cylinder Qty</span>
+                        <span class="value">5 KG</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Amount</span>
+                        <span class="value">₦7500</span>
+                    </div><hr>
+                    <div class="detail-row">
+                        <span class="label">Sub Total</span>
+                        <span class="value">₦10,500</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Delivery</span>
+                        <span class="value">Free</span>
+                    </div><hr>
+                    <div class="detail-row">
+                        <span class="label">Total</span>
+                        <span class="value">₦10,500</span>
+                    </div>
+                </div>
+
+                <div class="section-label">Contact Information</div>
+                <div class="contact-section">
+                    <div class="contact-row">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">09017771912</span>
+                    </div>
+                    <div class="contact-row">
+                        <span class="contact-label">Address</span>
+                        <span class="contact-value address">28, Sarkin Foto Street, Off badmus legway bustop by brilla way, surulere Lagos</span>
+                    </div>
+                </div>
+
+                <div class="section-label">Payment Method</div>
+                <div class="payment-option">
+                    <label>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Payment on Delivery
+                    </label>
+                    <input type="radio" name="payment">
+                </div>
+
+                <div class="payment-option">
+                    <label>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="5" width="20" height="14" rx="2"/>
+                            <path d="M2 10h20"/>
+                        </svg>
+                        Pay with Card
+                    </label>
+                    <input type="radio" name="payment">
+                </div>
+
+                <div class="payment-option">
+                    <label>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="18" rx="2"/>
+                            <path d="M7 7h10M7 12h10M7 17h10"/>
+                        </svg>
+                        Pay with Bank Transfer
+                    </label>
+                    <input type="radio" name="payment">
+                </div>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                    <button class="make-payment-btn">Make Payment</button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+   
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="paymentModalLabel">Payment Confirmation</h5> -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="Done icon.svg" alt="Payment Confirmation" class="img-fluid" style="max-height: 300px;">
+                    <h6 class="mt-3">You Order has been Sent Successfully </h6>
+                    <p>You order has been completed and has been received by our team, a representative from our company will come and pick up your cylinders for Refill and deliver them back.</p>
+                </div>
+                <a href="index.html">
+
+                    <div class="modal-footer" style="display: flex; justify-content: center; align-items: center; border: none; padding: 10px;">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="width: 100%; padding-top: 12px; padding-bottom: 12px;">
+                            Go back to home
+                        </button>
+                    </div>
+                    
+                </a>
+                
+                
+            </div>
+        </div>
+    </div>
+       
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                <img src="Logo.webp" alt="Saffron Gas" class="footer-logo">
+            </div>
+            <div class="col-md-8">
+                <div class="contact-info">
+                    <div class="col-md-8">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone icon" style="rotate: 90deg;"></i>
+                                <a href="tel:09023480455" style="text-decoration: none; color: inherit;">
+                                    <span>09023480455</span>
+                                </a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt icon"></i>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Ugbornkoko+Town,+adjacent+to+the+Secretariat" 
+                                   target="_blank" 
+                                   style="text-decoration: none; color: inherit;">
+                                    <span>Ugbornkoko Town, adjacent to the Secretariat</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- Bootstrap JS -->
+<script>
+
+    
+</script>
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
