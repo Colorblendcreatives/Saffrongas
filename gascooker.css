@@ -328,3 +328,67 @@ color: white;
         display: none;
     }
 }
+
+.amount-banner {
+    background-color: #dc3545;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.bank-info {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.info-row:last-child {
+    margin-bottom: 0;
+}
+
+.info-row span:first-child {
+    color: #6c757d;
+}
+
+.info-row span:last-child {
+    font-weight: 500;
+}
+
+.upload-box {
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.upload-box:hover {
+    background-color: #f8f9fa;
+}
+
+.upload-box i {
+    font-size: 2rem;
+    color: #dc3545;
+    margin-bottom: 1rem;
+}
+
+.file-preview {
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#submitTransferBtn:disabled {
+    opacity: 0.65;
+}
