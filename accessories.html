@@ -194,25 +194,25 @@
 
 
 <!-- Account Details modal------------------------------------- -->
-<div class="modal fade" id="bankTransferModal" tabindex="-1" aria-labelledby="bankTransferModalLabel" aria-hidden="true" data-bs-backdrop="true" data-bs-keyboard="true">
+<!-- <div class="modal fade" id="bankTransferModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header border-0">
                 <h5 class="modal-title">Bank Transfer Details</h5>
             </div>
             <div class="modal-body p-4">
-                <p class="text-muted small mb-4">Please transfer the exact amount to the account below</p>
+                <p class="text-muted small mb-4">Please transfer the exact amount to the account below</p> -->
 
                 <!-- Amount Display -->
-                <div class="amount-banner mb-4">
+                <!-- <div class="amount-banner mb-4">
                     <div class="d-flex justify-content-between align-items-center">
                         <span>Total Amount:</span>
-                        <span class="h4 mb-0" id="transferTotalAmount" style="font-weight: 500; font-size: medium;"></span>
+                        <span class="h4 mb-0" id="transferTotalAmount"></span>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Bank Details -->
-                <div class="bank-info mb-4">
+                <!-- <div class="bank-info mb-4">
                     <div class="info-row">
                         <span>Bank Name</span>
                         <span>First Bank</span>
@@ -225,10 +225,10 @@
                         <span>Account Number</span>
                         <span>0123456789</span>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Upload Section -->
-                <div class="upload-section">
+                <!-- <div class="upload-section">
                     <label class="form-label"><b>Upload Payment Receipt</b></label>
                     <div class="upload-box" id="uploadBox">
                         <i class="fas fa-cloud-upload-alt"></i>
@@ -248,7 +248,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
   
 <footer class="footer">
@@ -411,95 +411,94 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Account number
-document.addEventListener('DOMContentLoaded', function() {
-    // Elements
-    const uploadBox = document.getElementById('uploadBox');
-    const receiptInput = document.getElementById('receiptInput');
-    const filePreview = document.getElementById('filePreview');
-    const fileName = document.getElementById('fileName');
-    const removeFile = document.getElementById('removeFile');
-    const submitTransferBtn = document.getElementById('submitTransferBtn');
+            // document.addEventListener('DOMContentLoaded', function() {
+            //     // Elements
+            //     const uploadBox = document.getElementById('uploadBox');
+            //     const receiptInput = document.getElementById('receiptInput');
+            //     const filePreview = document.getElementById('filePreview');
+            //     const fileName = document.getElementById('fileName');
+            //     const removeFile = document.getElementById('removeFile');
+            //     const submitTransferBtn = document.getElementById('submitTransferBtn');
 
     // Show bank transfer modal when transfer payment is selected
-    document.querySelectorAll('input[name="payment"]').forEach(radio => {
-        radio.addEventListener('change', () => {
-            if (radio.id === 'transfer') {
-                const makePaymentBtn = document.querySelector('.modal-body .btn-danger');
-                makePaymentBtn.onclick = showBankTransferModal;
-                makePaymentBtn.disabled = false;
-            }
-        });
-    });
+                        // document.querySelectorAll('input[name="payment"]').forEach(radio => {
+                        //     radio.addEventListener('change', () => {
+                        //         if (radio.id === 'transfer') {
+                        //             const makePaymentBtn = document.querySelector('.modal-body .btn-danger');
+                        //             makePaymentBtn.onclick = showBankTransferModal;
+                        //             makePaymentBtn.disabled = false;
+                        //         }
+                        //     });
+                        // });
 
-    function showBankTransferModal() {
-        // Get total amount from order modal
-        const totalAmount = document.getElementById('modalTotal').textContent;
+                             // function showBankTransferModal() {
+    //     // Get total amount from order modal
+                //     const totalAmount = document.getElementById('modalTotal').textContent;
         
         // Hide order modal
-        const orderModal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
-        orderModal.hide();
+        // const orderModal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
+        // orderModal.hide();
         
         // Show transfer modal with amount
-        setTimeout(() => {
-            document.getElementById('transferTotalAmount').textContent = totalAmount;
-            const transferModal = new bootstrap.Modal(document.getElementById('bankTransferModal'));
-            transferModal.show();
-        }, 300);
-    }
+    //     setTimeout(() => {
+    //         document.getElementById('transferTotalAmount').textContent = totalAmount;
+    //         const transferModal = new bootstrap.Modal(document.getElementById('bankTransferModal'));
+    //         transferModal.show();
+    //     }, 300);
+    // }
 
     // File Upload Handling
-    uploadBox.addEventListener('click', () => receiptInput.click());
+                    // uploadBox.addEventListener('click', () => receiptInput.click());
 
-    uploadBox.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        uploadBox.style.backgroundColor = '#f8f9fa';
-    });
+                    // uploadBox.addEventListener('dragover', (e) => {
+                    //     e.preventDefault();
+                    //     uploadBox.style.backgroundColor = '#f8f9fa';
+                    // });
 
-    uploadBox.addEventListener('dragleave', (e) => {
-        e.preventDefault();
-        uploadBox.style.backgroundColor = '';
-    });
+                    // uploadBox.addEventListener('dragleave', (e) => {
+                    //     e.preventDefault();
+                    //     uploadBox.style.backgroundColor = '';
+                    // });
 
-    uploadBox.addEventListener('drop', (e) => {
-        e.preventDefault();
-        uploadBox.style.backgroundColor = '';
-        if (e.dataTransfer.files.length) {
-            handleFile(e.dataTransfer.files[0]);
-        }
-    });
+                    // uploadBox.addEventListener('drop', (e) => {
+                    //     e.preventDefault();
+                    //     uploadBox.style.backgroundColor = '';
+                    //     if (e.dataTransfer.files.length) {
+                    //         handleFile(e.dataTransfer.files[0]);
+                    //     }
+                    // });
 
-    receiptInput.addEventListener('change', (e) => {
-        if (e.target.files.length) {
-            handleFile(e.target.files[0]);
-        }
-    });
+                    // receiptInput.addEventListener('change', (e) => {
+                    //     if (e.target.files.length) {
+                    //         handleFile(e.target.files[0]);
+                    //     }
+                    // });
 
-    function handleFile(file) {
-        fileName.textContent = file.name;
-        filePreview.classList.remove('d-none');
-        submitTransferBtn.disabled = false;
-    }
+                    // function handleFile(file) {
+                    //     fileName.textContent = file.name;
+                    //     filePreview.classList.remove('d-none');
+                    //     submitTransferBtn.disabled = false;
+                    // }
 
-    removeFile.addEventListener('click', () => {
-        receiptInput.value = '';
-        filePreview.classList.add('d-none');
-        submitTransferBtn.disabled = true;
-    });
+                    // removeFile.addEventListener('click', () => {
+                    //     receiptInput.value = '';
+                    //     filePreview.classList.add('d-none');
+                    //     submitTransferBtn.disabled = true;
+                    // });
 
     // Submit handling
-    submitTransferBtn.addEventListener('click', () => {
-        if (!receiptInput.value) return;
-        
-        const transferModal = bootstrap.Modal.getInstance(document.getElementById('bankTransferModal'));
-        transferModal.hide();
-        
-        setTimeout(() => {
-            const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-            confirmationModal.show();
-        }, 300);
-    });
-});
-
+            //     submitTransferBtn.addEventListener('click', () => {
+            //         if (!receiptInput.value) return;
+                    
+            //         const transferModal = bootstrap.Modal.getInstance(document.getElementById('bankTransferModal'));
+            //         transferModal.hide();
+                    
+            //         setTimeout(() => {
+            //             const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+            //             confirmationModal.show();
+            //         }, 300);
+            //     });
+            // });
     </script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
